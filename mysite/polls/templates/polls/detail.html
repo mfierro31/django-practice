@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Question #{{ question.id }}</title>
+  </head>
+  <body>
+    {% if question %}
+      <p>Question: {{ question.question_text }}</p>
+      <p>Publication Date: {{ question.pub_date }}</p>
+      <p>Choices:</p>
+      <ul>
+        {% for choice in choices %}
+          <li>
+            <p>{{ choice.choice_text }}</p>
+            <p>Votes: {{ choice.votes }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Question does not exist.</p>
+    {% endif %}
+  </body>
+</html>
