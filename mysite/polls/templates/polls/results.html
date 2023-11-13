@@ -1,11 +1,9 @@
 {% extends "polls/base_question.html" %}
 
-{% block title %}Question #{{ question.id }}{% endblock %}
+{% block title %}Results for question #{{ question.id }}{% endblock %}
 
 {% block question_content %}
-  <p>Question: {{ question.question_text }}</p>
-  <p>Publication Date: {{ question.pub_date }}</p>
-  <p>Choices:</p>
+  <p>Results for question #{{ question.id }} - {{ question.question_text }}:</p>
   <ul>
     {% for choice in question.choice_set.all %}
       <li>

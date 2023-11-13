@@ -1,16 +1,14 @@
 {% extends "polls/base_question.html" %}
 
-{% block title %}Question #{{ question.id }}{% endblock %}
+{% block title %}Vote for question #{{ question.id }}{% endblock %}
 
 {% block question_content %}
-  <p>Question: {{ question.question_text }}</p>
-  <p>Publication Date: {{ question.pub_date }}</p>
-  <p>Choices:</p>
+  <p>Vote for question #{{ question.id }} - {{ question.question_text }}:</p>
   <ul>
     {% for choice in question.choice_set.all %}
       <li>
         <p>{{ choice.choice_text }}</p>
-        <p>Votes: {{ choice.votes }}</p>
+        <p>Votes: {{ choice.votes }} 👍 👎</p>
       </li>
     {% endfor %}
   </ul>

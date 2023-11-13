@@ -1,0 +1,11 @@
+{% extends "polls/base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+{% if question %}
+  {% block question_content %}{% endblock %}
+{% else %}
+  <p>Question does not exist.</p>
+{% endif %}
+{% endblock %}

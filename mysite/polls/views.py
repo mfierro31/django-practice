@@ -1,7 +1,5 @@
-from django.http import HttpResponse
 from .models import Question
-from .models import Choice
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 def index(request):
     # The "-" before pub_date is a shortcut for saying "in descending order".  "pub_date" by itself would imply ascending order
@@ -13,17 +11,22 @@ def index(request):
     return render(request, "polls/index.html", context)
 
 def detail(request, question_id):
-    q = Question.objects.get(pk=question_id)
-    choices = Choice.objects.filter(question__id=question_id)
-    print(choices)
+    q = get_object_or_404(Question, pk=question_id)
     context = {
-        "question": q,
-        "choices": choices
+        "question": q
     }
     return render(request, "polls/detail.html", context)
 
 def results(request, question_id):
-    return HttpResponse("You're looking at the results of question # %s." % question_id)
+    q = get_object_or_404(Question, pk=question_id)
+    context = {
+        "question": q
+    }
+    return render(request, "polls/results.html", context)
 
 def vote(request, question_id):
-    return HttpResponse("You're voting on question # %s." % question_id)
+    q = get_object_or_404(Question, pk=question_id)
+    context = {
+        "question": q
+    }
+    return render(request, "polls/vote.html", context)
